@@ -1,6 +1,8 @@
 <?php 
     //host
-    $host = 'localhost';
+    try {
+    //
+     $host = 'localhost';
     //bd name
 
     $db_name = 'blog';
@@ -15,10 +17,8 @@
     // PDO connection
     $connection = new PDO("mysql:host=$host;dbname=$db_name", $user_name, $password);
 
-    if ($connection === true) {
-        echo "connection successful";
-    } else {
-        echo "connection error";
-    };
-
-?>;
+    // $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    }catch(Exception $e){
+        echo "Error: ".$e->getMessage()."";
+    }
