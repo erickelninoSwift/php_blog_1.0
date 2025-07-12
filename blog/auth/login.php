@@ -31,8 +31,15 @@
         
             if (password_verify($password, $row["password"])) {
                //
-               echo "user have logged in";
-               header("location: ../index.php");
+               $_SESSION['username'] = $row['user_name'];
+               $_SESSION['email'] = $row['email'];
+               // i saved the user object in a session 
+               $_SESSION['user_object'] = $row;
+
+                header("location: http://localhost:8888/blog/blog_project_1.0/blog/index.php");
+               
+
+               
             }else {
                 echo "wrong password was provided";
             }
