@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,10 +36,27 @@
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="./index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="./posts/create.php">create</a>
                     </li>
+                    <?php if(!isset($_SESSION['email']) && !isset($_SESSION['user_name'])): ?>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="./auth/login.php">login</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
                             href="./auth/register.php">register</a></li>
+                    <?php endif; ?>
 
+                    <?php if(isset($_SESSION['email']) && isset($_SESSION['username'])): ?>
+                    <li class="nav-item dropdown" style="margin-top: 16px;">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <?php endif; ?>
 
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="./contact.php">Contact</a>
                     </li>
