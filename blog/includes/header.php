@@ -51,15 +51,11 @@
                     <?php if(isset($_SESSION['email']) && isset($_SESSION['username'])): ?>
                     <li class="nav-item dropdown mt-3">
                         <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <?php echo $_SESSION['username'];?>
+                            <?php echo "Hi, " . $_SESSION['username'];?>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="./auth/Logout.php">Logout</a></li>
                         </ul>
                     </li>
                     <?php endif; ?>

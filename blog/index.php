@@ -4,7 +4,9 @@
   <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
-              <?php echo 'Hello, ' . $_SESSION['username']; ?>
+              <?php if(isset($_SESSION['username']) && isset($_SESSION['email'])){
+                echo 'Hello, ' . $_SESSION['username'];
+              } ?>
               <!-- Post preview-->
               <div class="post-preview">
                   <a href="posts/post.html">
