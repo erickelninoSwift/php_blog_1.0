@@ -43,9 +43,9 @@
                     <?php endif; ?>
 
                     <?php if(isset($_SESSION['email']) && isset($_SESSION['username'])): ?>
-                    <li class="nav-item dropdown" style="margin-top: 16px;">
+                    <li class="nav-item dropdown mt-3">
                         <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                            <?php echo $_SESSION['username'];?>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Action</a></li>
