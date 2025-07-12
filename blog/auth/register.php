@@ -4,6 +4,10 @@
 
 <?php
 
+ if(isset($_SESSION['email']) && isset($_SESSION['username'])) {
+        header('location: http://localhost:8888/blog/blog_project_1.0/blog/index.php');
+    }
+
 // check if the server metho is get or post
       if($_SERVER['REQUEST_METHOD'] === "POST") {
         //
