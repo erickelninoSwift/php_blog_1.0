@@ -29,7 +29,9 @@
 
          $dir = "images/" . basename($file);
 
+         // Query first -> connection ->prepare
          $query = $connection->prepare("INSERT INTO posts (title, subtitle, body, img, user_id) VALUES (:title, :subtitle, :body, :img, :user_id)");
+         // execute the query : $query -> execute
          $query->execute([
             "title" => $title,
             "subtitle" => $subtitle,
