@@ -29,17 +29,18 @@
 
          $dir = "images/" . basename($file);
 
-         $query = $connection->prepare("INSERT INTO posts (title, subtitle, body, img) VALUES (:title, :subtitle, :body, :img)");
+         $query = $connection->prepare("INSERT INTO posts (title, subtitle, body, img, user_id) VALUES (:title, :subtitle, :body, :img, :user_id)");
          $query->execute([
             "title" => $title,
             "subtitle" => $subtitle,
             "body" => $body,
-            "file" => basename($_FILES['file']['name'])
+            "img" => basename($_FILES['file']['name']),
+            "user_id" => $current_user_id
          ]);
 
          if(move_uploaded_file($_FILES['file']['tmp_name'], $dir)){
               echo "File was uploaded";
-              header('location: http://localhost:8888/blog/blog_project_1.0/blog/index.php')
+              header('location: http://localhost:8888/blog/blog_project_1.0/blog/index.php');
          }
          
     }
