@@ -40,10 +40,10 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <p><?php echo $post['body']?></p>
                 <p>
-                    Placeholder text by
-                    <a href="http://spaceipsum.com/">Space Ipsum</a>
-                    &middot; Images by
-                    <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
+                    <a class="btn btn-danger text-center" href="http://spaceipsum.com/"
+                        style="text-decoration:none;">Delete</a>
+                    <a class="btn btn-warning text-center text-white" href="https://www.flickr.com/photos/nasacommons/"
+                        style="text-decoration: none;">Update</a>
                 </p>
             </div>
         </div>
