@@ -38,6 +38,7 @@
                //
                $_SESSION['username'] = $row['user_name'];
                $_SESSION['email'] = $row['email'];
+               $_SESSION['user_id'] = $row['user_id'];
                // i saved the user object in a session 
                $_SESSION['user_object'] = $row;
 
