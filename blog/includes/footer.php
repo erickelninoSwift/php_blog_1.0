@@ -29,7 +29,8 @@
                         </a>
                     </li>
                 </ul>
-                <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+                <div class="small text-center text-muted fst-italic">Copyright &copy; Eriik Elnino
+                    <?php echo date('Y')?></div>
             </div>
         </div>
     </div>
