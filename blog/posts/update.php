@@ -83,6 +83,9 @@
                 rows="8"><?php echo $all_posts['body'];?></textarea>
         </div>
 
+        <img class="mb-4" src="./images/<?php echo $all_posts['img']; ?>" width="100%" height="400px"
+            alt="upload picture" />
+
         <!-- #region -->
         <div class="form-outline mb-4">
             <input type="file" name="file" id="form2Example1" class="form-control" placeholder="image" />
