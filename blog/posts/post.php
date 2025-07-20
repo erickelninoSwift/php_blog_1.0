@@ -40,12 +40,15 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <p><?php echo $post['body']?></p>
                 <p>
+                    <?php if(isset($_SESSION['email'])): ?>
+
                     <a class="btn btn-danger text-center"
                         href="http://localhost:8888/blog/blog_project_1.0/blog/posts/delete.php?del_id=<?php echo $post['id']; ?>"
                         style="text-decoration:none;">Delete</a>
                     <a class="btn btn-warning text-center text-white"
                         href="http://localhost:8888/blog/blog_project_1.0/blog/posts/update.php?update_id=<?php echo $post['id']; ?>"
                         style="text-decoration: none;">Update</a>
+                    <?php endif;?>
                 </p>
             </div>
         </div>
