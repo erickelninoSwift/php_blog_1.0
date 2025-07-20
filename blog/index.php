@@ -29,6 +29,7 @@
                 echo 'Hello, ' . $_SESSION['username'];
               } ?>
               <!-- Post preview-->
+              <?php if(isset($_SESSION['username']) && isset($_SESSION['email'])): ?>
               <?php foreach($user_posts_rows as $row) :?>
               <div class="post-preview">
                   <a
@@ -44,6 +45,8 @@
               <!-- Divider-->
               <hr class="my-4" />
               <?php endforeach; ?>
+              <?php endif;?>
+
           </div>
 
       </div>
