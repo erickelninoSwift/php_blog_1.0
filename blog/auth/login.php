@@ -47,12 +47,12 @@
 
                
             }else {
-                echo "wrong password was provided";
+                  header("location: http://localhost:8888/blog/blog_project_1.0/blog/404.php");
             }
             
          }else {
 
-            echo "User was not found";
+             header("location: http://localhost:8888/blog/blog_project_1.0/blog/404.php");
          }
        }
 

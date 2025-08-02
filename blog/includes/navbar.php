@@ -64,14 +64,16 @@
                             <li><a class="dropdown-item"
                                     href="http://localhost:8888/blog/blog_project_1.0/blog/auth/user_profile.php">Profile</a>
                             </li>
-                            <li><a class="dropdown-item" href="http://localhost:8888/blog/blog_project_1.0/blog/auth/logout>Logout</a></li>
+                            <li><a class="dropdown-item"
+                                    href="http://localhost:8888/blog/blog_project_1.0/blog/auth/user_profile.php">Logout</a>
+                            </li>
                         </ul>
                     </li>
                     <?php endif; ?>
-                    <li class=" nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
-                                        href="http://localhost:8888/blog/blog_project_1.0/blog/contact.php">Contact</a>
-                            </li>
-                        </ul>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                            href="http://localhost:8888/blog/blog_project_1.0/blog/contact.php">Contact</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>

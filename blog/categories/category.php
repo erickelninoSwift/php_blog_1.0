@@ -26,7 +26,7 @@
        $all_posts = $fetch_posts->fetchAll(PDO::FETCH_ASSOC);
 
        //
-       $current_user = $_SESSION['user_id'];
+       $current_user = $_SESSION['user_id'] ?? '';
        
          $fetch_posts_user = $connection->prepare("SELECT * , posts.id as post_id FROM posts JOIN categories ON posts.category_id = categories.id JOIN users ON posts.user_id = users.user_id WHERE posts.category_id = :cat_id");
          $fetch_posts_user->execute([
