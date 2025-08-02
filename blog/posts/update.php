@@ -43,12 +43,8 @@
                header("location: http://localhost:8888/blog/blog_project_1.0/blog/posts/post.php?id=". $post_id);
          }
             
-        }else {
-             header("location: http://localhost:8888/blog/blog_project_1.0/blog/404.php");
         }
        
-    }else {
-         header("location: http://localhost:8888/blog/blog_project_1.0/blog/404.php");
     }
 ?>
 
