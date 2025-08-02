@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    include "../categories/all_catorgies.php"
  ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,7 +1,8 @@
 <?php include "../includes/header.php"?>
 <?php include "../config/config.php" ?>
+<?php include "../categories/all_catorgies.php"; ?>
 <?php 
-// check if method first 
+// check if method first
 
    if($_SERVER['REQUEST_METHOD'] === 'POST') {
     //
@@ -13,6 +14,7 @@
          $title = trim($_POST['title']);
          $subtitle = trim($_POST['subtitle']);
          $body = trim($_POST['body']);
+         $catgory_id = $_POST['category_id'];
          $file = $_FILES['file']['name'];
          //SESSION CURRENT USER
          $current_user = $_SESSION['email'];
@@ -20,22 +22,16 @@
 
          echo $current_user;
 
-         print_r([
-            "title" => $title,
-            "subtitle" => $subtitle,
-            "body" => $body,
-            "file" => basename($_FILES['file']['name'])
-         ]);
-
          $dir = "images/" . basename($file);
 
          // Query first -> connection ->prepare
-         $query = $connection->prepare("INSERT INTO posts (title, subtitle, body, img, user_id) VALUES (:title, :subtitle, :body, :img, :user_id)");
+         $query = $connection->prepare("INSERT INTO posts (title, subtitle, body, category_id, img, user_id) VALUES (:title, :subtitle, :body, :category_id, :img, :user_id)");
          // execute the query : $query -> execute
          $query->execute([
             "title" => $title,
             "subtitle" => $subtitle,
             "body" => $body,
+            "category_id" => $catgory_id,
             "img" => basename($_FILES['file']['name']),
             "user_id" => $current_user_id
          ]);
@@ -64,6 +60,14 @@
     <div class="form-outline mb-4">
         <textarea type="text" name="body" id="form2Example1" class="form-control" placeholder="body"
             rows="8"></textarea>
+    </div>
+    <div class="form-outline mb-4">
+        <select name="category_id" class="form-select" aria-label="Select a category">
+            <option selected disabled>Select a category</option>
+            <?php foreach($all_categories as $cat): ?>
+            <option name="category_id" value="<?php echo $cat['id']; ?>"><?php echo $cat['name']; ?></option>
+            <?php endforeach; ?>
+        </select>
     </div>
 
 

@@ -1,5 +1,6 @@
 <?php include "navbar.php";
  $current_page = $_SERVER['PHP_SELF'];
+ 
 ?>
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('../assets/img/home-bg.jpg')">
