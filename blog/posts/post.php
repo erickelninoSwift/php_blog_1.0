@@ -10,6 +10,8 @@
        $fetch_post = $connection->query("SELECT * FROM posts WHERE id='$id'");
        $fetch_post->execute();
        $post = $fetch_post->fetch(PDO::FETCH_ASSOC);
+   }else {
+       header("location: http://localhost:8888/blog/blog_project_1.0/blog/404.php");
    }
 
 ?>

@@ -37,6 +37,8 @@
             };
         }
 
+      }else {
+         header("location: http://localhost:8888/blog/blog_project_1.0/blog/404.php");
       }
  ?>
 
