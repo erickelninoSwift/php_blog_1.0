@@ -28,11 +28,12 @@
        //
        $current_user = $_SESSION['user_id'];
        
-         $fetch_posts_user = $connection->prepare("SELECT * FROM posts JOIN categories ON posts.category_id = categories.id JOIN users ON posts.user_id = users.user_id WHERE posts.category_id = :cat_id");
+         $fetch_posts_user = $connection->prepare("SELECT * , posts.id as post_id FROM posts JOIN categories ON posts.category_id = categories.id JOIN users ON posts.user_id = users.user_id WHERE posts.category_id = :cat_id");
          $fetch_posts_user->execute([
             "cat_id" => $cat_id
          ]);
          $fetch_posts_user = $fetch_posts_user->fetchAll(PDO::FETCH_ASSOC);
+
     
 ?>
 <div class="container mt-5 px-4 px-lg-5">
@@ -42,6 +43,7 @@
     </h2>
 
     <!-- Post Preview Card -->
+    <?php if(count($fetch_posts_user) > 0): ?>
     <?php foreach($fetch_posts_user as $current_post): ?>
     <div class="card mb-4">
         <div class="card-body">
@@ -53,18 +55,18 @@
                 Posted by <strong><?php echo $current_post['user_name']; ?></strong> &nbsp;
                 <?php echo $current_post['created_at']; ?>
             </p>
-
-
-            <a href="#" class="btn btn-outline-dark btn-sm">Read More</a>
+            <a href="http://localhost:8888/blog/blog_project_1.0/blog/posts/post.php?id=<?php echo $current_post['post_id']; ?>"
+                class="btn btn-outline-dark btn-sm">Read More</a>
         </div>
     </div>
     <?php endforeach; ?>
     <!-- No Posts Message -->
-    <!--
-  <div class="alert alert-info text-center">
-    No posts found in this category.
-  </div>
-  -->
+    <?php else: ?>
+    <div class="alert alert-info text-center">
+        No posts found in this category.
+    </div>
+    <?php endif; ?>
+
 </div>
 
 <?php include "../includes/footer.php"; ?>
