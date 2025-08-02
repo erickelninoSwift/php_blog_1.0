@@ -34,7 +34,8 @@
          ]);
          $fetch_posts_user = $fetch_posts_user->fetchAll(PDO::FETCH_ASSOC);
 
-    
+      
+         
 ?>
 <div class="container mt-5 px-4 px-lg-5">
     <!-- Category Header -->
