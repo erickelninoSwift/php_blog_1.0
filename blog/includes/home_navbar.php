@@ -57,7 +57,9 @@
                             <?php echo "Hi, " . $_SESSION['username'];?>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item"
+                                    href="http://localhost:8888/blog/blog_project_1.0/blog/auth/user_profile.php">Profile</a>
+                            </li>
                             <li><a class="dropdown-item" href="./auth/Logout.php">Logout</a></li>
                         </ul>
                     </li>

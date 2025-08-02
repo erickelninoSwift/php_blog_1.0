@@ -50,10 +50,10 @@
             <h3 class="card-title"><?php echo htmlspecialchars($current_post['title']);?></h3>
             <h5 class="card-subtitle mb-2 text-muted"><?php echo htmlspecialchars($current_post['subtitle']); ?></h5>
             <p class="card-text text-grey">
-                <?php echo htmlspecialchars(substr($current_post['body'], 0, 150)) . '...'; ?>
+                <?php echo htmlspecialchars($current_post['body']); ?>
             <p class="card-text">
                 Posted by <strong><?php echo $current_post['user_name']; ?></strong> &nbsp;
-                <?php echo $current_post['created_at']; ?>
+                <?php echo date('F j, Y', strtotime($current_post['created_at'])); ?>
             </p>
             <a href="http://localhost:8888/blog/blog_project_1.0/blog/posts/post.php?id=<?php echo $current_post['post_id']; ?>"
                 class="btn btn-outline-dark btn-sm">Read More</a>
