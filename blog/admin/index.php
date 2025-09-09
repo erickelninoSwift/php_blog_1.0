@@ -4,7 +4,7 @@
     <div id="wrapper">
         <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">LOGO</a>
+                <a class="navbar-brand" href="<?php __DIR__ . 'index.php' ?>">LOGO</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -13,19 +13,25 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav side-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-white" style="margin-left: 20px;" href="index.html">Home
+                            <a class="nav-link text-white" style="margin-left: 20px;"
+                                href="http://localhost:8888/blog/blog_project_1.0/blog/admin-panel/">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admins/admins.html" style="margin-left: 20px;">Admins</a>
+                            <a class="nav-link"
+                                href="http://localhost:8888/blog/blog_project_1.0/blog/admin-panel/admins/admins.php"
+                                style="margin-left: 20px;">Admins</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="categories-admins/show-categories.html"
+                            <a class="nav-link"
+                                href="http://localhost:8888/blog/blog_project_1.0/blog/admin-panel/categories-admins/show-categories.php"
                                 style="margin-left: 20px;">Categories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="posts-admins/show-posts.html" style="margin-left: 20px;">Posts</a>
+                            <a class="nav-link"
+                                href="http://localhost:8888/blog/blog_project_1.0/blog/admin-panel/post-admins/show-posts.php"
+                                style="margin-left: 20px;">Posts</a>
                         </li>
                         <!--  <li class="nav-item">
             <a class="nav-link" href="#" style="margin-left: 20px;">Comments</a>
@@ -33,12 +39,14 @@
                     </ul>
                     <ul class="navbar-nav ml-md-auto d-md-flex">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home
+                            <a class="nav-link"
+                                href="http://localhost:8888/blog/blog_project_1.0/blog/admin-panel/">Home
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="admins/login-admins.html">login
+                            <a class="nav-link"
+                                href="http://localhost:8888/blog/blog_project_1.0/blog/admin-panel/admins/login-admins.php">login
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -126,4 +134,4 @@
     </tr>
   </tbody>
 </table> -->
-            <?php include "./layout/footer.php"; ?>
+            <?php include __DIR__ . '/layout/footer.php'; ?>
