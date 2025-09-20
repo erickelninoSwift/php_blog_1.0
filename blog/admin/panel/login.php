@@ -1,4 +1,13 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
+<?php
+    if (isset($_POST['submit'])) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        echo "Email: $email <br> Password: $password";
+    };
+
+?>
 <div class="container-fluid">
     <div class="row">
         <div class="col">
