@@ -1,5 +1,9 @@
 <?php include "./layout/header.php"; ?>
 <div class="container-fluid">
+    <?php if(isset($_SESSION['amdin_username'])){
+        echo "Welcome " . $_SESSION['admin_username'];
+    } ?>
+    <?php if(isset($_SESSION['admin_username'])): ?>
     <div class="row">
         <div class="col-md-4">
             <div class="card">
@@ -32,7 +36,22 @@
             </div>
         </div>
     </div>
-    <!--  <div class="row">
+    <?php endif; ?>
+    <?php if(!isset($_SESSION['admin_username'])): ?>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mt-5">You are not logged in. Please <a
+                            href="<?php echo base_url('admin/panel/login'); ?>">login</a> to access the admin panel.
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+</div>
+<!--  <div class="row">
         <div class="col">
           <div class="card">
             <div class="card-body">
@@ -67,4 +86,4 @@
     </tr>
   </tbody>
 </table> -->
-    <?php include __DIR__ . '/layout/footer.php'; ?>
+<?php include __DIR__ . '/layout/footer.php'; ?>

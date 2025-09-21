@@ -1,5 +1,5 @@
 <?php define('BASE_URL', '/blog/blog_project_1.0/blog/');
-   
+session_start();
    function base_url($path) {
          return BASE_URL . $path . '.php';
    }
@@ -33,6 +33,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarText">
+                    <?php if (isset($_SESSION['admin_username'])) :?>
                     <ul class="navbar-nav side-nav">
                         <li class="nav-item">
                             <a class="nav-link text-white" style="margin-left: 20px;"
@@ -52,10 +53,11 @@
                             <a class="nav-link" href="<?php echo base_url('admin/post/show'); ?>"
                                 style="margin-left: 20px;">Posts</a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="#" style="margin-left: 20px;">Comments</a>
-                        </li> -->
+                        </li>
                     </ul>
+                    <?php endif; ?>
                     <ul class="navbar-nav ml-md-auto d-md-flex">
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url('admin/index'); ?>">Home
@@ -73,7 +75,7 @@
                                 username
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Logout</a>
+                                <a class="dropdown-item" href="<?php echo base_url('admin/panel/logout'); ?>">Logout</a>
 
                         </li>
 

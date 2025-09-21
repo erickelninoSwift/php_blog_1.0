@@ -1,11 +1,36 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
+<?php include __DIR__ . "/../../config/config.php"; ?>
 <?php
     if (isset($_POST['submit'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        echo "Email: $email <br> Password: $password";
-    };
+        $stmt = $connection->prepare("SELECT * FROM admins WHERE email = :email AND password = :password");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $password);
+        $stmt->execute();
+
+        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo "<pre>";
+        print_r($admin);
+        echo "</pre>";
+
+        echo gettype($stmt->rowCount());
+
+
+        if ($stmt->rowCount() > 0) {
+            // Login successful
+            $_SESSION['admin_id'] = $admin['id'];
+            $_SESSION['admin_email'] = $admin['email'];
+            $_SESSION['admin_username'] = $admin['admin_name'];
+            header("Location: " . base_url('admin/panel/index'));
+            exit();
+        } else {
+            // Login failed
+            echo "<div class='alert alert-danger' role='alert'>Invalid email or password.</div>";
+        }
+    
+    }
 
 ?>
 <div class="container-fluid">
