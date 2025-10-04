@@ -1,5 +1,4 @@
 <?php include __DIR__ . "/../layout/header.php"; ?>
-<?php include __DIR__ . "/../../config/config.php"; ?>
 <?php
     if (isset($_POST['submit'])) {
         $email = $_POST['email'];

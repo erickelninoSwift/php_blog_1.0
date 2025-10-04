@@ -1,4 +1,37 @@
-<?php include "./layout/header.php"; ?>
+<?php include __DIR__ . "/layout/header.php"; ?>
+<?php 
+ $posts = null;
+ $categories = null;
+ $admins = null;
+   if(basename($_SERVER['PHP_SELF']) == 'index.php') {
+      $query = "SELECT * FROM posts";
+      $stmt = $connection->prepare($query);
+      $stmt->execute();
+    
+      // fetching all posts
+      if ($stmt->rowCount() > 0) {
+         $posts = $stmt->rowCount();
+      }
+      // cathegories
+      $query = "SELECT * FROM categories";
+      $stmt = $connection->prepare($query);
+
+      $stmt->execute();
+      if ($stmt->rowCount() > 0) {
+         $categories = $stmt->rowCount();
+      }
+
+      //admins
+      $qyery = "SELECT * FROM admins";
+      $stmt = $connection->prepare($qyery);
+      $stmt->execute();
+      if ($stmt->rowCount() > 0) {
+         $admins = $stmt->rowCount();
+      }
+   }
+
+
+?>
 <div class="container-fluid">
     <?php if(isset($_SESSION['amdin_username'])){
         echo "Welcome " . $_SESSION['admin_username'];
@@ -10,7 +43,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Posts</h5>
                     <!-- <h6 class="card-subtitle mb-2 text-muted">Bootstrap 4.0.0 Snippet by pradeep330</h6> -->
-                    <p class="card-text">number of posts: 8</p>
+                    <p class="card-text">number of posts: <?php echo $posts ?? 0; ?></p>
 
                 </div>
             </div>
@@ -20,7 +53,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Categories</h5>
 
-                    <p class="card-text">number of categories: 4</p>
+                    <p class="card-text">number of categories: <?php echo $categories ?? 0; ?></p>
 
                 </div>
             </div>
@@ -30,7 +63,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Admins</h5>
 
-                    <p class="card-text">number of admins: 3</p>
+                    <p class="card-text">number of admins: <?php echo $admins ?? 0; ?></p>
 
                 </div>
             </div>

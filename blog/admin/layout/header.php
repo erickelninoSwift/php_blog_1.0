@@ -1,3 +1,4 @@
+<?php include __DIR__ . "/../../config/config.php"; ?>
 <?php define('BASE_URL', '/blog/blog_project_1.0/blog/');
 session_start();
    function base_url($path) {
@@ -69,6 +70,12 @@ session_start();
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo base_url('index'); ?>">blog
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <?php if (isset($_SESSION['admin_username'])) :?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,8 +85,7 @@ session_start();
                                 <a class="dropdown-item" href="<?php echo base_url('admin/panel/logout'); ?>">Logout</a>
 
                         </li>
-
-
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
