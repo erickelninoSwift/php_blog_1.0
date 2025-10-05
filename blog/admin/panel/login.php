@@ -22,7 +22,7 @@
             $_SESSION['admin_id'] = $admin['id'];
             $_SESSION['admin_email'] = $admin['email'];
             $_SESSION['admin_username'] = $admin['admin_name'];
-            header("Location: " . base_url('admin/panel/index'));
+            header("Location: " . base_url('admin/index'));
             exit();
         } else {
             // Login failed

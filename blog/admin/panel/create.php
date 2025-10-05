@@ -1,4 +1,29 @@
 <?php require __DIR__ ."/../layout/header.php"; ?>
+<?php
+   
+   if(isset($_POST['submit'])) {
+      $email = $_POST['email'];
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+
+      //hash password
+      $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+      // insert into database
+      $query = "INSERT INTO admins (admin_name, email, password) VALUES (:username, :email, :password)";
+      $stmt = $connection->prepare($query);
+      $stmt->bindParam(':username', $username);
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':password', $hashed_password);
+
+      if($stmt->execute()) {
+         //redirect to index page
+         header("Location: " . base_url('admin/panel/index'));
+         exit();
+      }
+   }
+
+?>
 <div class="container-fluid">
     <div class="row">
         <div class="col">

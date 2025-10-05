@@ -4,29 +4,32 @@
  $categories = null;
  $admins = null;
    if(basename($_SERVER['PHP_SELF']) == 'index.php') {
-      $query = "SELECT * FROM posts";
+      $query = "SELECT COUNT(*) as totla_posts FROM posts";
       $stmt = $connection->prepare($query);
       $stmt->execute();
-    
+      $total_post_data = $stmt->fetch(PDO::FETCH_OBJ);
       // fetching all posts
-      if ($stmt->rowCount() > 0) {
-         $posts = $stmt->rowCount();
-      }
+      if (!empty($total_post_data) || $total_post_data != null) {
+         $posts = $total_post_data->totla_posts;
+      };
       // cathegories
-      $query = "SELECT * FROM categories";
-      $stmt = $connection->prepare($query);
-
-      $stmt->execute();
-      if ($stmt->rowCount() > 0) {
-         $categories = $stmt->rowCount();
+      $query = "SELECT COUNT(*) as total_category FROM categories";
+      $catgories_total = $connection->prepare($query);
+      //
+     $catgories_total->execute();
+     //
+     $categoryData = $catgories_total->fetch(PDO::FETCH_OBJ);
+      if ($categoryData) {
+          $categories = $categoryData->total_category;
       }
 
       //admins
-      $qyery = "SELECT * FROM admins";
+      $qyery = "SELECT COUNT(*) as admins_total FROM admins";
       $stmt = $connection->prepare($qyery);
       $stmt->execute();
-      if ($stmt->rowCount() > 0) {
-         $admins = $stmt->rowCount();
+      $admin_total_data = $stmt->fetch(PDO::FETCH_OBJ);
+      if ($admin_total_data) {
+         $admins = $admin_total_data->admins_total;
       }
    }
 

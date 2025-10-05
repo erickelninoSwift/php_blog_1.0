@@ -1,4 +1,20 @@
 <?php require "../layout/header.php"; ?>
+
+<?php
+     
+     if(isset($_SESSION['admin_username'])) {
+        //make a query to fetch all admin
+        $query = "SELECT * FROM admins";
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $admins = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $count = $stmt->rowCount();
+        }
+     }
+
+?>
 <div class="container-fluid">
     <?php if(isset($_SESSION['amdin_username'])){
         echo "Welcome " . $_SESSION['admin_username'];
@@ -21,24 +37,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($admins as $admin): ?>
                             <tr>
                                 <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-
+                                <td><?php echo $admin['admin_name']; ?></td>
+                                <td><?php echo $admin['email']; ?></td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-
-                            </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

@@ -27,7 +27,7 @@ session_start();
     <div id="wrapper">
         <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="<?php echo base_url('admin/panel/index'); ?>">LOGO</a>
+                <a class="navbar-brand" href="<?php echo base_url('admin/index'); ?>">LOGO</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -65,11 +65,13 @@ session_start();
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
+                        <?php if (!isset($_SESSION['admin_username'])) :?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url('admin/panel/login'); ?>">login
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
+                        <?php endif; ?>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo base_url('index'); ?>">blog
                                 <span class="sr-only">(current)</span>
