@@ -81,7 +81,7 @@ session_start();
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                username
+                                <?php echo $_SESSION['admin_username']; ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="<?php echo base_url('admin/panel/logout'); ?>">Logout</a>

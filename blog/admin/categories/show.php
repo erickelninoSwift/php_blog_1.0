@@ -1,4 +1,15 @@
 <?php require __DIR__ ."/../layout/header.php"; ?>
+<?php 
+    
+   
+    $query = "SELECT * FROM categories";
+    $stmt = $connection->prepare($query);
+    $stmt->execute();
+
+    $count = $stmt->rowCount();
+    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+?>
 <div class="container-fluid">
 
     <div class="row">
@@ -19,30 +30,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($categories as $category) : ?>
                             <tr>
                                 <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td><a href="update-category.html"
-                                        class="btn btn-warning text-white text-center ">Update Categories</a></td>
-                                <td><a href="delete-category.html" class="btn btn-danger  text-center ">Delete
+                                <td><?php echo $category['name']; ?></td>
+                                <td><a href="http://localhost:8888/blog/blog_project_1.0/blog/admin/categories/update.php?id=<?php echo $category['id']; ?>"
+                                        class="btn btn-warning text-white text-center ">Update Categories</a>
+                                </td>
+                                <td><a href="" class="btn btn-danger  text-center ">Delete
                                         Categories</a></td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td><a href="update-category.html" class="btn btn-warning text-white text-center">Update
-                                        Categories</a></td>
-                                <td><a href="delete-category.html" class="btn btn-danger  text-center ">Delete
-                                        Categories</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td><a href="update-category.html"
-                                        class="btn btn-warning text-white text-center ">Update Categories</a></td>
-                                <td><a href="delete-category.html" class="btn btn-danger text-center">Delete
-                                        Categories</a></td>
-                            </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

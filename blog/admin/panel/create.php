@@ -18,7 +18,7 @@
 
       if($stmt->execute()) {
          //redirect to index page
-         header("Location: " . base_url('admin/panel/index'));
+         header("Location: " . base_url('admin/index'));
          exit();
       }
    }
