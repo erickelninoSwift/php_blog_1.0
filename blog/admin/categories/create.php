@@ -1,4 +1,21 @@
 <?php require __DIR__ ."/../layout/header.php"; ?>
+<?php 
+  
+   if(isset($_POST['submit'])) {
+      $name = $_POST['name'];
+
+      // insert into database
+      $query = "INSERT INTO categories (name) VALUES (:name)";
+      $stmt = $connection->prepare($query);
+      $stmt->bindParam(':name', $name);
+
+      if($stmt->execute()) {
+         //redirect to index page
+         header("Location: " . base_url('admin/categories/show'));
+         exit();
+      }
+   };
+   ?>
 <div class="container-fluid">
     <div class="row">
         <div class="col">

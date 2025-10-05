@@ -30,14 +30,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($categories as $category) : ?>
+                            <?php foreach($categories as $index => $category) : ?>
                             <tr>
-                                <th scope="row">1</th>
+                                <th scope="row"><?php echo $index + 1; ?></th>
                                 <td><?php echo $category['name']; ?></td>
                                 <td><a href="http://localhost:8888/blog/blog_project_1.0/blog/admin/categories/update.php?id=<?php echo $category['id']; ?>"
                                         class="btn btn-warning text-white text-center ">Update Categories</a>
                                 </td>
-                                <td><a href="" class="btn btn-danger  text-center ">Delete
+                                <td><a href="http://localhost:8888/blog/blog_project_1.0/blog/admin/categories/delete_categories.php?id=<?php echo $category['id']; ?>"
+                                        class="btn btn-danger  text-center ">Delete
                                         Categories</a></td>
                             </tr>
                             <?php endforeach; ?>
