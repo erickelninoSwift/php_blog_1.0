@@ -2,7 +2,10 @@
 include __DIR__ . "/../../config/config.php";
 define('BASE_URL', '/blog/blog_project_1.0/blog/');
 session_start();
-
+if(!isset($_SESSION['admin_id']) || !isset($_SESSION['admin_email'])) {
+       header("Location: http://localhost:8888/blog/blog_project_1.0/blog/login.php");
+       exit();
+   };
 function base_url($path) {
     return BASE_URL . $path . '.php';
 }

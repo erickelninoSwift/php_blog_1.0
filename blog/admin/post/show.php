@@ -1,5 +1,11 @@
 <?php include __DIR__ . "/../layout/header.php";  ?>
 <?php 
+
+   if(!isset($_SESSION['admin_id']) || !isset($_SESSION['admin_email'])) {
+       header("Location: http://localhost:8888/blog/blog_project_1.0/blog/login.php");
+       exit();
+   };
+   
    $query = "SELECT 
     posts.id AS post_id,
     posts.title,
@@ -52,19 +58,17 @@ JOIN categories ON posts.category_id = categories.id
                                 <td><?php echo $post['title']; ?></td>
                                 <td><?php echo $post['category_name']; ?></td>
                                 <td>
-                                    <span
-                                        class="badge <?php if($post['post_status'] == 1) { echo 'bg-success'; } else { echo 'bg-danger'; } ?> text-white"
-                                        style="padding: 8px 14px; font-size: 0.8rem;">
-                                        <?php echo $post['post_status'] == 1 ?  "Active" : "Inactive"; ?>
-                                    </span>
+                                    <a
+                                        href="http://localhost:8888/blog/blog_project_1.0/blog/admin/post/update_status.php?status=<?php echo $post['post_status']; ?>&id=<?php echo $post['post_id']; ?>">
+                                        <span
+                                            class="badge <?php if($post['post_status'] == 1) { echo 'bg-success'; } else { echo 'bg-warning'; } ?> text-white"
+                                            style="padding: 8px 14px; font-size: 0.8rem;">
+                                            <?php echo $post['post_status'] == 1 ?  "Activated" : "Deactivated"; ?>
+                                        </span>
+                                    </a>
                                 </td>
                                 <td><?php echo $post['author_name']; ?></td>
                                 <td>
-                                    <a href="http://localhost:8888/blog/blog_project_1.0/blog/admin/post/update_status.php?status=<?php echo $post['post_status']; ?>&id=<?php echo $post['post_id']; ?>"
-                                        class="btn btn-warning btn-sm text-center me-2">
-                                        Update
-                                    </a>
-
                                     <a href="http://localhost:8888/blog/blog_project_1.0/blog/admin/post/delete_post.php?id=<?php echo $post['post_id']; ?>"
                                         class="btn btn-danger btn-sm text-center">
                                         Delete

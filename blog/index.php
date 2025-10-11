@@ -18,14 +18,14 @@
        if(isset($user['user_id'])) {
          // the user exist now we will fetch the post
 
-          $query_posts = $connection->query("SELECT * FROM posts WHERE user_id='$current_user_id'");
+          $query_posts = $connection->query("SELECT * FROM posts WHERE user_id='$current_user_id' AND status=1");
           $query_posts->execute();
           $user_posts_rows = $query_posts->fetchAll(PDO::FETCH_ASSOC);
           
        }
      }else {
         //
-         $fetch_posts_query = $connection->prepare("SELECT posts.*, users.user_name FROM posts JOIN users ON posts.user_id=users.user_id");
+         $fetch_posts_query = $connection->prepare("SELECT posts.*, users.user_name FROM posts JOIN users ON posts.user_id=users.user_id WHERE posts.status=1");
          $fetch_posts_query->execute();
          $posts_random = $fetch_posts_query->fetchAll(PDO::FETCH_ASSOC);
          $row_number = $fetch_posts_query->rowCount();
