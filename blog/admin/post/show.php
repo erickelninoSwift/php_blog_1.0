@@ -3,9 +3,7 @@
    $query = "SELECT 
     posts.id AS post_id,
     posts.title,
-    posts.subtitle,
-    posts.body,
-    posts.img,
+    posts.status AS post_status,
     posts.created_at AS post_created_at,
     users.user_id AS author_id,
     users.user_name AS author_name,
@@ -54,14 +52,15 @@ JOIN categories ON posts.category_id = categories.id
                                 <td><?php echo $post['title']; ?></td>
                                 <td><?php echo $post['category_name']; ?></td>
                                 <td>
-                                    <span class="badge bg-success text-white"
+                                    <span
+                                        class="badge <?php if($post['post_status'] == 1) { echo 'bg-success'; } else { echo 'bg-danger'; } ?> text-white"
                                         style="padding: 8px 14px; font-size: 0.8rem;">
-                                        Active
+                                        <?php echo $post['post_status'] == 1 ?  "Active" : "Inactive"; ?>
                                     </span>
                                 </td>
                                 <td><?php echo $post['author_name']; ?></td>
                                 <td>
-                                    <a href="http://localhost:8888/blog/blog_project_1.0/blog/admin/post/update_post.php?id=<?php echo $post['post_id']; ?>"
+                                    <a href="http://localhost:8888/blog/blog_project_1.0/blog/admin/post/update_status.php?status=<?php echo $post['post_status']; ?>&id=<?php echo $post['post_id']; ?>"
                                         class="btn btn-warning btn-sm text-center me-2">
                                         Update
                                     </a>
