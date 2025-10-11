@@ -1,10 +1,5 @@
 <?php include __DIR__ . "/../layout/header.php";  ?>
 <?php 
-
-   if(!isset($_SESSION['admin_id']) || !isset($_SESSION['admin_email'])) {
-       header("Location: http://localhost:8888/blog/blog_project_1.0/blog/login.php");
-       exit();
-   };
    
    $query = "SELECT 
     posts.id AS post_id,
@@ -84,6 +79,19 @@ JOIN categories ON posts.category_id = categories.id
     </div>
 
 </div>
+<?php if(!isset($_SESSION['admin_username'])): ?>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mt-5">You are not logged in. Please <a
+                        href="<?php echo base_url('admin/panel/login'); ?>">login</a> to access the admin panel.
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 <script type="text/javascript">
 
 </script>
