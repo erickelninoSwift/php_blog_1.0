@@ -1,11 +1,6 @@
 <?php require "../layout/header.php"; ?>
 
 <?php
-
-if(!isset($_SESSION['admin_id']) || !isset($_SESSION['admin_email'])) {
-       header("Location: http://localhost:8888/blog/blog_project_1.0/blog/login.php");
-       exit();
-   };
      
      if(isset($_SESSION['admin_username'])) {
         //make a query to fetch all admin

@@ -1,11 +1,7 @@
 <?php require __DIR__ ."/../layout/header.php"; ?>
 <?php 
 
-if(!isset($_SESSION['admin_id']) || !isset($_SESSION['admin_email'])) {
-       header("Location: http://localhost:8888/blog/blog_project_1.0/blog/login.php");
-       exit();
-   };
-  
+
    if(isset($_POST['submit'])) {
       $name = $_POST['name'];
 
